@@ -4,9 +4,9 @@ import pandas as pd
 
 CONF = {
     'user': 'root',
-    'password': '0918222925',
+    'password': 'password',
     'host': 'localhost',
-    'database': 'pham_22317009'
+    'database': 'dbs'
 }
 
 def connect():
