@@ -5,3 +5,37 @@ This project involves designing and developing a relational database system for 
 
 - The data_implementation file will create tables and add data into the tables.
 - The sqlScript file contains some of the queries/stored procedures/triggers which can be use to control and manage data operations in the database. This ensure the data consistency and support transactional operations within the database system.
+
+Relational Schema
+Festival(festivalID, name, country, organizer)
+AwardCategory(categoryID, categoryName, awardClass, festivalID)
+	FK festivalID REF Festival(festivalID)
+YearlyCeremony(festivalID, ceremonyYear, startDate, endDate, location, numOfGuests)
+	FK festivalID REF Festival(festivalID)
+Nomination(nomID, nominationDate, detail, isWinner, ceremonyYear, festivalID, categoryID)
+	FK ceremonyYear, festivalID REF YearlyCeremony(ceremonyYear, festivalID)
+	FK categoryID REF AwardCategory(categoryID)
+Person(personID, name, birthday, birthPlace, gender, role)
+PersonNominated(nomID, personID, personRole, characterName),
+	FK nomID REF Nomination(nomID),
+	FK personID REF Person(personID)
+Film(filmID, title, year, genre, duration)
+FilmNominated (nomID, filmID, specialNote),
+	FK nomID REF Nomination(nomID),
+	FK filmID REF Film(filmID)
+Studio(studioID, studioName, country, foundedYear, type),
+Produce(filmID, studioID, cost),
+	FK filmID REF Film(filmID),
+	FK studioID REF Studio(studioID)
+
+
+![festival](/image-1.png "Festival table")
+![YearlyCeremony](/image-2.png "YearlyCeremony table")
+![Film](/image-3.png "Film Table")
+![AwardCategory](/image-4.png "AwardCategory")
+![Person](/image-5.png "Person")
+![Nomination](/image-6.png "Nomination")
+![Studio](/image-7.png "Studio")
+![PersonNominated](/image-8.png "PersonNominated")
+![FilmNominated](/image-9.png "FilmNominated")
+![Produce](/image-10.png "Produce")
